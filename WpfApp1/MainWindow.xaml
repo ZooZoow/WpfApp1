@@ -1,0 +1,66 @@
+﻿<Window x:Class="PhoneCallCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Калькулятор стоимости разговора" Height="300" Width="600"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="0,0,0,-113" Background="#808080">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Левая колонка: входные поля и вывод стоимости -->
+        <StackPanel Grid.Column="0" Margin="0,0,10,105">
+            <!-- Длительность -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
+                <TextBlock Width="120" Text="Длительность (мин):"/>
+                <TextBox x:Name="TxtDuration" Width="100" TextAlignment="Right"/>
+            </StackPanel>
+
+            <!-- Цена за минуту -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
+                <TextBlock Width="120" Text="Цена за минуту (₽):"/>
+                <TextBox x:Name="TxtPrice" Width="100" TextAlignment="Right"/>
+            </StackPanel>
+
+            <!-- Пропуск двух воображаемых полей (визуальный отступ) -->
+            <Separator Height="30" Visibility="Collapsed"/>
+            <!-- невидимый разделитель -->
+
+            <!-- Поле вывода стоимости -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,10,30,10">
+                <TextBlock Width="120" Text="Стоимость (₽):"/>
+                <TextBlock x:Name="TxtCost" 
+                           Width="100"
+                           TextAlignment="Right"
+                           Background="LightGray"
+                           Padding="2"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Правая колонка: дни недели и кнопка -->
+        <StackPanel Grid.Column="1"  Margin="10,0,0,0">
+            <!-- Группа дней недели -->
+            <GroupBox Header="День недели" Width="220">
+                <WrapPanel Orientation="Vertical" VerticalAlignment="Top">
+                    <RadioButton x:Name="RbMonday" Content="Понедельник" Margin="5"/>
+                    <RadioButton x:Name="RbTuesday" Content="Вторник" Margin="5"/>
+                    <RadioButton x:Name="RbWednesday" Content="Среда" Margin="5"/>
+                    <RadioButton x:Name="RbThursday" Content="Четверг" Margin="5"/>
+                    <RadioButton x:Name="RbFriday" Content="Пятница" Margin="5"/>
+                    <RadioButton x:Name="RbSaturday" Content="Суббота" Margin="5"/>
+                    <RadioButton x:Name="RbSunday" Content="Воскресенье" Margin="5"/>
+                </WrapPanel>
+            </GroupBox>
+
+            <!-- Кнопка «Вычислить» -->
+            <Button Content="Вычислить"
+                    Width="120"
+                    HorizontalAlignment="Left"
+                    Click="BtnCalculate_Click"
+                    Margin="15"/>
+        </StackPanel>
+    </Grid>
+</Window>
