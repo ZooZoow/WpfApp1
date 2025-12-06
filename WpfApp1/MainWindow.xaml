@@ -10,25 +10,19 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Левая колонка: входные поля и вывод стоимости -->
         <StackPanel Grid.Column="0" Margin="0,0,10,105">
-            <!-- Длительность -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
                 <TextBlock Width="120" Text="Длительность (мин):"/>
                 <TextBox x:Name="TxtDuration" Width="100" TextAlignment="Right"/>
             </StackPanel>
 
-            <!-- Цена за минуту -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10">
                 <TextBlock Width="120" Text="Цена за минуту (₽):"/>
                 <TextBox x:Name="TxtPrice" Width="100" TextAlignment="Right"/>
             </StackPanel>
 
-            <!-- Пропуск двух воображаемых полей (визуальный отступ) -->
             <Separator Height="30" Visibility="Collapsed"/>
-            <!-- невидимый разделитель -->
 
-            <!-- Поле вывода стоимости -->
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Margin="10,10,30,10">
                 <TextBlock Width="120" Text="Стоимость (₽):"/>
                 <TextBlock x:Name="TxtCost" 
@@ -40,9 +34,7 @@
             </StackPanel>
         </StackPanel>
 
-        <!-- Правая колонка: дни недели и кнопка -->
         <StackPanel Grid.Column="1"  Margin="10,0,0,0">
-            <!-- Группа дней недели -->
             <GroupBox Header="День недели" Width="220">
                 <WrapPanel Orientation="Vertical" VerticalAlignment="Top">
                     <RadioButton x:Name="RbMonday" Content="Понедельник" Margin="5"/>
@@ -55,7 +47,6 @@
                 </WrapPanel>
             </GroupBox>
 
-            <!-- Кнопка «Вычислить» -->
             <Button Content="Вычислить"
                     Width="120"
                     HorizontalAlignment="Left"

@@ -24,7 +24,6 @@ namespace PhoneCallCalculator
 
         private void BtnCalculate_Click(object sender, RoutedEventArgs e)
         {
-            // 1. Проверка заполнения полей
             if (string.IsNullOrWhiteSpace(TxtDuration.Text) ||
                 string.IsNullOrWhiteSpace(TxtPrice.Text))
             {
@@ -36,7 +35,6 @@ namespace PhoneCallCalculator
                 return;
             }
 
-            // 2. Проверка выбора дня недели
             if (!IsAnyDaySelected())
             {
                 MessageBox.Show(
@@ -47,7 +45,6 @@ namespace PhoneCallCalculator
                 return;
             }
 
-            // 3. Проверка на числовые значения
             double duration, pricePerMinute;
             if (!double.TryParse(TxtDuration.Text, out duration) ||
                 !double.TryParse(TxtPrice.Text, out pricePerMinute))
@@ -60,7 +57,6 @@ namespace PhoneCallCalculator
                 return;
             }
 
-            // 4. Проверка на положительные значения
             if (duration <= 0 || pricePerMinute <= 0)
             {
                 MessageBox.Show(
@@ -71,14 +67,11 @@ namespace PhoneCallCalculator
                 return;
             }
 
-            // 5. Расчёт стоимости
             double totalCost = CalculateCost(duration, pricePerMinute);
 
-            // 6. Вывод результата в TxtCost
             TxtCost.Text = $"{totalCost:F2}";
         }
 
-        // Проверка, выбран ли хотя бы один день недели
         private bool IsAnyDaySelected()
         {
             return RbMonday.IsChecked == true ||
@@ -90,32 +83,27 @@ namespace PhoneCallCalculator
                    RbSunday.IsChecked == true;
         }
 
-        // Расчёт стоимости разговора
         private double CalculateCost(double duration, double pricePerMinute)
         {
             double cost = 0;
 
-            // Стоимость первых 30 минут
             double first30Minutes = Math.Min(duration, 30);
             cost += first30Minutes * pricePerMinute;
 
-            // Стоимость минут после 30-й (скидка 30%)
             if (duration > 30)
             {
                 double extraMinutes = duration - 30;
-                cost += extraMinutes * pricePerMinute * 0.7; // 30% скидка
+                cost += extraMinutes * pricePerMinute * 0.7; 
             }
 
-            // Скидка 15% в выходные (суббота, воскресенье)
             if (IsWeekendSelected())
             {
-                cost *= 0.85; // 15% скидка
+                cost *= 0.85; 
             }
 
             return cost;
         }
 
-        // Проверка, выбран ли выходной день
         private bool IsWeekendSelected()
         {
             return RbSaturday.IsChecked == true || RbSunday.IsChecked == true;
